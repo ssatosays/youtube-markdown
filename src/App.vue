@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <before-conversion
+    ref="bfConversion"
+    @clearMarkdownTxt="clearMarkdownTxt"
+    @pushMarkdownTxt="pushMarkdownTxt"
+  ></before-conversion>
+  <after-conversion
+    ref="afConversion"
+  ></after-conversion>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BeforeConversion from './components/BeforeConversion.vue'
+import AfterConversion from './components/AfterConversion.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    'before-conversion': BeforeConversion,
+    'after-conversion': AfterConversion
+  },
+  data() {
+    return {
+    }
+  },
+  methods: {
+    clearMarkdownTxt(){
+      this.$refs.afConversion['markdownTxt'] = ''
+    },
+    pushMarkdownTxt(data) {
+      this.$refs.afConversion['markdownTxt'] = data.markdownTxt
+    }
   }
 }
 </script>
@@ -19,8 +39,43 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 40px;
+}
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+hr {
+  color: #d9d9d9;
+}
+input {
+  background: #f2f2f2;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 95%;
+}
+input:focus {
+  outline-color: #42b883;
+}
+button {
+  font-size: 1rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.card {
+  background: #f2f2f2;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #d9d9d9;
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
 }
 </style>
