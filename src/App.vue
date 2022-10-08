@@ -67,6 +67,10 @@ button {
   margin-left: 5px;
   margin-right: 5px;
 }
+img {
+  width: 320px;
+  height: auto;
+}
 .card {
   background: #f2f2f2;
   border-radius: 5px;
@@ -77,5 +81,8 @@ button {
   margin-left: 40px;
   margin-right: 40px;
   padding: 10px;
+}
+.mt {
+  margin-top: 20px;
 }
 </style>

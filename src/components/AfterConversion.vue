@@ -3,8 +3,11 @@
     <h2>After conversion - Markdown</h2>
     <hr>
     <input type="text" v-model="markdownTxt">
-    <div style="margin-top: 20px">
+    <div class="mt">
       <button @click="copy()">copy</button>
+    </div>
+    <div class="mt" v-if="thumbnailUrl !== ''">
+      <img src="https://img.youtube.com/vi/LIlZCmETvsY/0.jpg">
     </div>
   </div>
 </template>
@@ -14,7 +17,8 @@ export default {
   name: 'AfterConversion',
   data() {
     return {
-      markdownTxt: ''
+      markdownTxt: '',
+      thumbnailUrl: 'tmp'
     }
   },
   methods: {

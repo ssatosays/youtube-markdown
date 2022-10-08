@@ -3,7 +3,7 @@
     <h2>Before conversion - YouTube Url</h2>
     <hr>
     <input type="text" v-model="sourceUrl">
-    <div style="margin-top: 20px">
+    <div class="mt">
       <button @click="clear()">clear</button>
       <button @click="paste()">paste</button>
       <button @click="convert()">convert</button>
