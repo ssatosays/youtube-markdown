@@ -7,7 +7,7 @@
       <button @click="copy()">copy</button>
     </div>
     <div class="mt" v-if="thumbnailUrl !== ''">
-      <img src="https://img.youtube.com/vi/LIlZCmETvsY/0.jpg">
+      <img :src="thumbnailUrl">
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       markdownTxt: '',
-      thumbnailUrl: 'tmp'
+      thumbnailUrl: ''
     }
   },
   methods: {

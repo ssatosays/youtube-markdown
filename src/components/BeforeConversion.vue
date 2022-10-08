@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <h2>Before conversion - YouTube Url</h2>
+    <h2>Before conversion - YouTube URL</h2>
     <hr>
     <input type="text" v-model="sourceUrl">
     <div class="mt">
@@ -22,7 +22,7 @@ export default {
   methods: {
     clear() {
       this.sourceUrl = ''
-      this.$emit('clearMarkdownTxt')
+      this.$emit('clearYoutubeInfo')
     },
     async paste() {
       this.sourceUrl = await navigator.clipboard.readText()
@@ -30,11 +30,25 @@ export default {
     convert() {
       // https://www.youtube.com/watch?v={id}
       // https://youtu.be/{id}
-      const src = this.sourceUrl
-      console.log(src)
-      // [![](https://img.youtube.com/vi/LIlZCmETvsY/0.jpg)](https://www.youtube.com/watch?v=LIlZCmETvsY)
-      const markdownTxt = '[![](https://img.youtube.com/vi/LIlZCmETvsY/0.jpg)](https://www.youtube.com/watch?v=LIlZCmETvsY)'
-      this.$emit('pushMarkdownTxt', {markdownTxt: markdownTxt})
+      try {
+        const url = new URL(this.sourceUrl)
+        const params = url.searchParams
+        let id = '';
+        if (url.origin === 'https://www.youtube.com' && params.get('v')) {
+          id = params.get('v')
+        } else if (url.origin === 'https://youtu.be') {
+          id = url.pathname.substr(1, url.pathname.length)
+        } else {
+          alert('ERROR: Not a YouTube URL.')
+          return
+        }
+        const thumbnailUrl = `https://img.youtube.com/vi/${id}/0.jpg`
+        const markdownTxt = `[![](${thumbnailUrl})](https://www.youtube.com/watch?v=${id})`
+        this.$emit('pushYoutubeInfo', {markdownTxt: markdownTxt, thumbnailUrl: thumbnailUrl})
+      } catch(e) {
+        console.error(e)
+        alert('ERROR: Please check the URL you entered.')
+      }
     }
   }
 }

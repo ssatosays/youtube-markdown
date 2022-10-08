@@ -1,8 +1,8 @@
 <template>
   <before-conversion
     ref="bfConversion"
-    @clearMarkdownTxt="clearMarkdownTxt"
-    @pushMarkdownTxt="pushMarkdownTxt"
+    @clearYoutubeInfo="clearYoutubeInfo"
+    @pushYoutubeInfo="pushYoutubeInfo"
   ></before-conversion>
   <after-conversion
     ref="afConversion"
@@ -24,11 +24,13 @@ export default {
     }
   },
   methods: {
-    clearMarkdownTxt(){
+    clearYoutubeInfo(){
       this.$refs.afConversion['markdownTxt'] = ''
+      this.$refs.afConversion['thumbnailUrl'] = ''
     },
-    pushMarkdownTxt(data) {
+    pushYoutubeInfo(data) {
       this.$refs.afConversion['markdownTxt'] = data.markdownTxt
+      this.$refs.afConversion['thumbnailUrl'] = data.thumbnailUrl
     }
   }
 }
