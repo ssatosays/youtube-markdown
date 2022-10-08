@@ -2,7 +2,7 @@
   <div class="card">
     <h2>Before conversion - YouTube URL</h2>
     <hr>
-    <input type="text" v-model="sourceUrl">
+    <input type="text" placeholder="edit me" v-model="sourceUrl" ref="url">
     <div class="mt">
       <button @click="clear()">clear</button>
       <button @click="paste()">paste</button>
@@ -18,6 +18,9 @@ export default {
     return {
       sourceUrl: ''
     }
+  },
+  mounted() {
+    this.$refs.url.focus()
   },
   methods: {
     clear() {
