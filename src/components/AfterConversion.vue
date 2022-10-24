@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <h2>After conversion - Markdown</h2>
+    <h2>After - Markdown</h2>
     <hr>
     <input type="text" v-model="markdownTxt">
     <div class="mt">

@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <h2>Before conversion - YouTube URL</h2>
+    <h2>Before - YouTube URL</h2>
     <hr>
     <input type="text" placeholder="edit me" v-model="sourceUrl" ref="url">
     <div class="mt">
