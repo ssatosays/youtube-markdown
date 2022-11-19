@@ -7,6 +7,11 @@
   <after-conversion
     ref="afConversion"
   ></after-conversion>
+  <footer>
+    <div>
+      <a href="https://github.com/ssatosays/youtube-markdown">ssatosays/youtube-markdown</a>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -86,5 +91,13 @@ img {
 }
 .mt {
   margin-top: 20px;
+}
+footer div {
+  margin-top: 50px;
+  text-align: center;
+}
+footer div a {
+  color: inherit;
+  text-decoration: none;
 }
 </style>
